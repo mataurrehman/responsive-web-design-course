@@ -9,6 +9,7 @@ clone project and go to tribute page using this command
 cd tribute-page
 
 ```
+open tribute.html by double clicking file and opening it any moderen browser.
 
 ## Technology Stack
 
