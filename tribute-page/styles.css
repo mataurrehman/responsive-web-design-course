@@ -1,0 +1,139 @@
+body {
+    background: #525051;
+    color: #333;
+    margin: 0px;
+    padding: 0px;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin: 0px;
+    color: #fff;
+    border: 1px solid #506569;
+    background-color: rgba(0, 0, 0, 0.98);
+    background-image: url("https://gridbyexample.com/img/inflicted.png")
+}
+
+.title {
+    font-family: "Open Sans Bold", Helvetica, sans-serif;
+}
+
+.content-wrapper {
+    display: flex;
+    background-color: #fff;
+    color: #444;
+    margin: 10px auto;
+    line-height: 1.5;
+    align-items: flex-start;
+}
+
+.quotes_box,
+.img-div {
+    background-color: #E9ECEF;
+    color: #212529;
+    border-radius: 5px;
+}
+
+.img-div {
+    flex: 1 0 50%;
+}
+
+.quotes_box {
+    flex: 0 0 40%;
+    margin-left: 10px;
+    padding: 6px;
+}
+
+.quotes_box h3 {
+    text-align: center;
+}
+
+
+#image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 0px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
+.img-div figure {
+    margin: 0;
+}
+
+.img-caption {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.tribute_info {
+    background-color: #E9ECEF;
+    padding: 10px 0px;
+}
+
+.tribute_info h3 {
+    text-align: center;
+    margin-right: 160px;
+}
+
+.tribute_info ul {
+    margin: 0 auto;
+    text-align: left;
+    max-width: 500px;
+    line-height: 1.5;
+
+}
+
+
+blockquote {
+    font-size: 1.4em;
+    max-width: 380px;
+    margin: 0 auto;
+    font-family: Open Sans;
+    font-style: italic;
+    color: #555555;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid #78C0A8;
+    line-height: 1.6;
+    position: relative;
+    background: #EDEDED;
+}
+
+blockquote::before {
+    font-family: Arial;
+    content: "\201C";
+    color: #78C0A8;
+    font-size: 4em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
+
+blockquote span {
+    display: block;
+    color: #333333;
+    font-style: normal;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-color: rgb(81, 123, 105);
+    }
+
+    .content-wrapper {
+        display: flex;
+        line-height: 1.5;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quotes_box {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}
