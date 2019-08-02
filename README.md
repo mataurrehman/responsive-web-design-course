@@ -10,7 +10,7 @@ cd tribute-page
 
 ```
 
-"" Technology Stack
+## Technology Stack
 
 - CSS
 - HTML5
