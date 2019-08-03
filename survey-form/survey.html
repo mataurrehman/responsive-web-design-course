@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="title" class="title">Survey Form</h1>
+            <p id="description">Tell us, How can we Improve?</p>
+        </div>
+
+        <div class="form_wrapper">
+            <form id="survey-form" class="survey_form">
+                <div class="item">
+                    <label id="name-label" for="name">Name* </label>
+                    <input type="text" id="name" placeholder="Enter name" required>
+                </div>
+
+                <div class="item">
+                    <label id="email-label">Email*</label>
+                    <input type="email" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="item">
+                    <label id="number-label">Age*</label>
+                    <input type="number" id="number" placeholder="Enter Age" min="1" max="150" required>
+                </div>
+                <div class="item">
+                    <label>City of residence</label>
+                    <select id="dropdown">
+                        <option>Lahore</option>
+                        <option>Karachi</option>
+                        <option>London</option>
+                        <option>New York</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label>Gender</label>
+                    <div>
+                        <label><input type="radio" name="gender" value="0" checked>Male</label>
+                        <label><input type="radio" name="gender" value="1">Female</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>Favorite sports</label>
+                    <div>
+                        <label><input type="checkbox" value="1" checked>Cricket</label>
+                        <label><input type="checkbox" value="2">Hockey</label>
+                        <label><input type="checkbox" value="3">Football</label>
+                        <label><input type="checkbox" value="4">Golf</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>Programmer Type</label>
+                    <select id="experience">
+                        <option value="1">Backend developer</option>
+                        <option value="2">Fullstack developer</option>
+                        <option value="3">Frontend Developer</option>
+                        <option value="4">UX developer</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label>You watch HTML videos from?</label>
+                    <div>
+                        <label><input type="radio" name="source" value="y" checked>Youtube</label>
+                        <label><input type="radio" name="source" value="c">Codecamp</label>
+                        <label><input type="radio" name="source" value="l">Lynda</label>
+                    </div>
+                </div>
+                <div class="item">
+                    <label>Any Comments?</label>
+                    <textarea rows="4" cols="50" name="comment" placeholder="Enter your comments ..."></textarea>
+                </div>
+                <div class="full-width">
+                    <button type="submit" id="submit" class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
