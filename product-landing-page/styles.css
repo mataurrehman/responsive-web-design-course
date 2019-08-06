@@ -3,13 +3,30 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+#wrapper {
+    position: relative;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
     background: #ccc;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem 0;
+    height: 60px;
+
 }
 
 @media (min-width: 550px) {
@@ -18,16 +35,12 @@ header {
     }
 }
 
-.branding {
+.brand {
     flex: 0 1 100%;
 }
 
-.branding h1 {
-    margin: 0;
-}
-
-@media (min-width: 550px) {
-    .branding {
+@media screen and (min-width: 550px) {
+    .brand {
         flex: 0 1 60%;
     }
 
@@ -40,8 +53,8 @@ header {
     }
 }
 
-@media (min-width: 1300px) {
-    .branding {
+@media screen and(min-width: 1300px) {
+    .brand {
         flex: 0 1 75%;
     }
 }
@@ -64,10 +77,11 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    /* flex: 1; */
 }
 
-@media (min-width: 550px) {
+@media screen and (min-width: 550px) {
     nav {
         flex: 0 1 40%;
     }
@@ -77,8 +91,25 @@ nav ul {
     }
 }
 
-@media (min-width: 1300px) {
+@media screen and (min-width: 1300px) {
     nav {
         flex: 0 1 25%;
     }
+}
+
+section {
+    margin-top: 60px;
+    text-align: center;
+    height: 200px;
+    /* position: relative; */
+    /* top: 90px; */
+}
+
+footer {
+    margin-top: 50px;
+    height: 200px;
+    text-align: center;
+
+    /* position: relative; */
+    /* top: 10px; */
 }
