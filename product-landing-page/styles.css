@@ -1,16 +1,15 @@
+:root {
+    --header-height: 80px;
+    --footer-height: 70px;
+}
+
 body {
     margin: 0;
     font-family: "Roboto", sans-serif;
 }
 
-#wrapper {
+.wrapper {
     position: relative;
-}
-
-.container {
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
 }
 
 header {
@@ -24,43 +23,27 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem 0;
-    height: 60px;
-
+    height: var(--header-height);
+    padding: 0 1rem;
 }
 
-@media (min-width: 550px) {
-    header {
-        padding: 0 1rem;
-    }
+.header-img {
+    max-width: 100%;
+    height: var(--header-height);
+    padding-top: 7px;
+    padding-left: 20px;
+}
+
+.nav-link {
+    font-size: 17px;
 }
 
 .brand {
-    flex: 0 1 100%;
-}
-
-@media screen and (min-width: 550px) {
-    .brand {
-        flex: 0 1 60%;
-    }
-
-    nav {
-        flex: 0 1 40%;
-    }
-
-    nav ul {
-        justify-content: space-around;
-    }
-}
-
-@media screen and(min-width: 1300px) {
-    .brand {
-        flex: 0 1 75%;
-    }
+    flex: 0 1 60%;
 }
 
 nav {
-    flex: 0 1 100%;
+    flex: 0 1 40%;
 }
 
 nav a {
@@ -68,43 +51,46 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    color: rgba(255, 255, 255, 0.7);
-}
-
 nav ul {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
-    /* flex: 1; */
-}
+    justify-content: space-around;
 
-@media screen and (min-width: 550px) {
-    nav {
-        flex: 0 1 40%;
-    }
-
-    nav ul {
-        justify-content: space-around;
-    }
-}
-
-@media screen and (min-width: 1300px) {
-    nav {
-        flex: 0 1 25%;
-    }
 }
 
 section {
-    margin-top: 60px;
-    text-align: center;
-    height: 200px;
+    margin-top: 90px;
 }
 
 footer {
     margin-top: 50px;
     height: 200px;
     text-align: center;
+}
+
+.features-container,
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+}
+
+.video-container {
+    height: 400px;
+}
+
+@media screen and (max-width: 500px) {
+    .brand {
+        flex: 0 1 100%;
+        text-align: center;
+    }
 }

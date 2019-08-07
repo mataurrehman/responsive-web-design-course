@@ -6,25 +6,37 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <header class="header">
+    <div class="wrapper">
+        <header class="header" id="header">
             <div class="brand">
-                <img src="header.png" alt="header image" id="header-img">
+                <img src="./images/logo.png" alt="header image" id="header-img" class="header-img">
             </div>
-            <nav class="nav-bar">
+            <nav class="nav-bar" id="nav-bar">
                 <ul>
                     <li class="nav-link"><a href="#features">Features</a></li>
-                    <li class="nav-link"><a href="#how-works">How it work</a></li>
+                    <li class="nav-link"><a href="#how-works">How it works</a></li>
                     <li class="nav-link"><a href="#pricing">Pricing</a></li>
                 </ul>
             </nav>
         </header>
-        <div class="container"></div>
-        <section id="features">Ata is good</section>
-        <section id="how-works">Ata is bad</section>
-        <section id="pricing">Ata is worst</section>
-
-
+        <section id="features" class="features">Ata is good</section>
+        <div class="video-container">
+            <section id="how-works" class="how-works">
+                <iframe width="500" height="350" src="https://www.youtube.com/embed/eiwZkist7F8">
+                </iframe>
+                <form id="form" action="https://www.freecodecamp.com/email-submit">
+                    <input type="email" id="email" placeholder="Enter email">
+                    <input type="submit" id="submit" value="Email">
+                </form>
+            </section>
+        </div>
+        <div class="pricing-container">
+            <section id="pricing" class="pricing">
+                <div>Product 1</div>
+                <div>Product 2</div>
+                <div>Product 3</div>
+            </section>
+        </div>
         <footer>
             This is footer
         </footer>
