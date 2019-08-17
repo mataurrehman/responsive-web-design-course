@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    position: fixed;
+    padding: 10px;
+    min-width: 300px;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    border-right: 2px solid;
+    border-right-color: grey;
+}
+
+nav li {
+    list-style: none;
+}
+
+#main-doc {
+    position: absolute;
+    left: 321px;
+    padding: 10px;
+    height: 100vh;
+}
+
+nav {
+    text-align: center;
+}
