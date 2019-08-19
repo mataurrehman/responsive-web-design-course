@@ -8,46 +8,175 @@
 
 <body>
     <nav id="navbar">
-        <header>Python 3.7</header>
+        <header>Immutable.js Docs</header>
         <ul>
-            <li><a href="#1" class="nav-link">Package index</a></li>
-            <li><a href="#2" class="nav-link">Browse Package</a></li>
-            <li><a href="#3" class="nav-link">List two classifier</a></li>
-            <li><a href="#4" class="nav-link">RSS</a></li>
-            <li><a href="#5" class="nav-link">PyPi Tutorial</a></li>
-            <li><a href="#6" class="nav-link">PyPi Security</a></li>
-            <li><a href="#7" class="nav-link">PyPi Support</a></li>
-            <li><a href="#8" class="nav-link">PyPi bug reports</a></li>
-            <li><a href="#9" class="nav-link">PyPi Discussion</a></li>
+            <li><a href="#what_is_immutable?" class="nav-link">What is Immutable?</a></li>
+            <li><a href="#collection" class="nav-link">Collection</a></li>
+            <li><a href="#FromJS" class="nav-link">FromJS</a></li>
+            <li><a href="#iterable" class="nav-link">Iterable</a></li>
+            <li><a href="#list" class="nav-link">List</a></li>
+            <li><a href="#map" class="nav-link">Map</a></li>
+            <li><a href="#ordered_map" class="nav-link">Ordered Map</a></li>
         </ul>
     </nav>
     <main id="main-doc">
-        <section class="main-section" id="1">
-            <header>Package index</header>
+        <section class="main-section" id="what_is_immutable?">
+            <header>What is Immutable?</header>
+            <p>
+                Immutable data encourages pure functions (data-in, data-out) and lends itself to much simpler
+                application development and enabling techniques from functional programming such as lazy evaluation.
+            </p>
+            <p>
+                While designed to bring these powerful functional concepts to JavaScript, it presents an Object-Oriented
+                API familiar to Javascript engineers and closely mirroring that of Array, Map, and Set. It is easy and
+                efficient to convert to and from plain Javascript types.
+            </p>
+            <p>
+                Note: all examples are presented in ES6. To run in all browsers, they need to be translated to ES3. For
+                example:
+            </p>
+            <code>
+                // ES6<br>
+                foo.map(x => x * x);<br>
+                // ES3<br>
+                foo.map(function (x) { return x * x; });
+            </code>
         </section>
-        <section class="main-section" id="2">
-            <header>Browse Package</header>
+        <section class="main-section" id="collection">
+            <header>Collection</header>
+            <p>
+                Collection is the abstract base class for concrete data structures. It cannot be constructed directly.
+            </p>
+            <code>
+                class Collection<K, V> extends Iterable<K, V>
+            </code>
+            <h4>Discussion</h4>
+            <p>
+                Implementations should extend one of the subclasses, Collection.Keyed, Collection.Indexed, or
+                Collection.Set
+            </p>
+            <h5>Useful methods of collection</h5>
+            <ul>
+                <li>butLast()</li>
+                <li>concat()</li>
+                <li>count()</li>
+                <li>countBy()</li>
+                <li>entries()</li>
+            </ul>
         </section>
-        <section class="main-section" id="3">
-            <header>List two classifiers</header>
+        <section class="main-section" id="FromJS">
+            <header>FromJS</header>
+            <p>Deeply converts plain JS objects and arrays to Immutable Maps and Lists.</p>
+            <code>
+                fromJS(json: any, reviver?: (k: any, v: Iterable<any, any>) => any): any
+            </code>
+            <p>
+                <h4>Discussion</h4>
+                <p>If a reviver is optionally provided, it will be called with every collection as a Seq (beginning
+                    with the most nested collections and proceeding to the top-level collection itself), along with the
+                    key referring to each collection and the parent JS object provided as this. For the top level,
+                    object, the key will be "". This reviver is expected to return a new Immutable Iterable, allowing
+                    for custom conversions from deep JS objects.
+                </p>
+
+                <p>This example converts JSON to List and OrderedMap:</p>
+                <code>
+                    Immutable.fromJS({a: {b: [10, 20, 30]}, c: 40}, function (key, value) {
+                    var isIndexed = Immutable.Iterable.isIndexed(value);
+                    return isIndexed ? value.toList() : value.toOrderedMap();
+                    });
+                    <br>
+                    // true, "b", {b: [10, 20, 30]}
+                    <br>
+                    // false, "a", {a: {b: [10, 20, 30]}, c: 40}
+                    <br>
+                    // false, "", {"": {a: {b: [10, 20, 30]}, c: 40}}
+                </code>
+            </p>
         </section>
-        <section class="main-section" id="4">
-            <header>RSS</header>
+        <section class="main-section" id="iterable">
+            <header>Iterable</header>
+            <p>
+                The Iterable is a set of (key, value) entries which can be iterated, and is the base class for all
+                collections in immutable, allowing them to make use of all the Iterable methods (such as map and
+                filter).
+            </p>
+            <code>
+                class Iterable &lt;K,V&gt;
+            </code>
+            <p>
+                <h4>Discussion</h4>
+                Discussion
+                Note: An iterable is always iterated in the same order, however that order may not always be well
+                defined, as is the case for the Map and Set.
+            </p>
+
         </section>
-        <section class="main-section" id="5">
-            <header>PyPi Tutorial</header>
+        <section class="main-section" id="list">
+            <header>List</header>
+            <p>
+                Lists are ordered indexed dense collections, much like a JavaScript Array.
+            </p>
+            <code>
+                class List&lt;T&gt; extends Collection.Indexed&lt;T&gt;
+            </code>
+            <h4>Discussion</h4>
+            <p>Lists are immutable and fully persistent with O(log32 N) gets and sets, and O(1) push and pop.</p>
+            <p>Lists implement Deque, with efficient addition and removal from both the end (push, pop) and beginning
+                (unshift, shift).</p>
+
+            <p>Unlike a JavaScript Array, there is no distinction between an "unset" index and an index set to
+                undefined. List#forEach visits all indices from 0 to size, regardless of whether they were explicitly
+                defined.</p>
+
+
         </section>
-        <section class="main-section" id="6">
-            <header>PyPi Security</header>
+        <section class="main-section" id="map">
+            <header>Map</header>
+            <p>
+                Immutable Map is an unordered Iterable.Keyed of (key, value) pairs with O(log32 N) gets and O(log32 N)
+                persistent sets.
+            </p>
+            <code>&lt;class Map&lt;K, V&gt; extends Collection.Keyed &lt;K, V&gt;</code>
+            <h4>Discussion</h4>
+            <p>
+                Iteration order of a Map is undefined, however is stable. Multiple iterations of the same Map will
+                iterate in the same order.
+            </p>
+            <p>
+                Map's keys can be of any type, and use Immutable.is to determine key equality. This allows the use of
+                any value (including NaN) as a key.
+            </p>
+            <p>
+                Because Immutable.is returns equality based on value semantics, and Immutable collections are treated as
+                values, any Immutable collection may be used as a key.
+            </p>
+            <code>
+                Map().set(List.of(1), 'listofone').get(List.of(1));
+                // 'listofone'
+            </code>
+            <p>
+                Any JavaScript object may be used as a key, however strict identity is used to evaluate key equality.
+                Two similar looking objects will represent two different keys.<br>
+                Implemented by a hash-array mapped trie.
+            </p>
         </section>
-        <section class="main-section" id="7">
-            <header>PyPi Support</header>
-        </section>
-        <section class="main-section" id="8">
-            <header>PyPi bug reports</header>
-        </section>
-        <section class="main-section" id="9">
-            <header>PyPi Discussion</header>
+        <section class="main-section" id="ordered_map">
+            <header>Ordered Map</header>
+            <p>
+                A type of Map that has the additional guarantee that the iteration order of entries will be the order in
+                which they were set().
+            </p>
+            <code>
+                class OrderedMap&lt;K, V&gt; extends Map&lt;K, V&gt;
+            </code>
+            <h4>Discussion</h4>
+            <p>
+                The iteration behavior of OrderedMap is the same as native ES6 Map and JavaScript Object.<br>
+
+                Note that OrderedMap are more expensive than non-ordered Map and may consume more memory. OrderedMap#set
+                is amortized O(log32 N), but not stable.
+            </p>
         </section>
     </main>
 </body>
