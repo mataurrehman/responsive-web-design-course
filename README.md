@@ -1,5 +1,5 @@
 # Projects for freecodecamp responsive web design projects 
- This consist of 6 projects which are required to complete the course of responsive design.
+ This consist of 5 projects which are required to complete the course of responsive design.
 
 ## Running
 
